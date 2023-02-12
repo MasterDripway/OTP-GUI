@@ -10,14 +10,14 @@ QTextEdit {
     background-color: rgb(75,75,75);
 }
 QPushButton {
-    background: #000000;
+    background: rgb(75, 75, 75);
     color:#FFFFFF;
     transition: background 0.5s;
     transition: color 0.5s;
 }
 
-QPushButton::hover {
+QPushButton:hover {
     background: #FFFFFF;
     color: #000000;
-
+    qproperty
 }
