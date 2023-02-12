@@ -19,6 +19,5 @@ QPushButton {
 QPushButton::hover {
     background: #FFFFFF;
     color: #000000;
-    transition: background 0.5s;
-    transition: color 0.5s; 
+
 }
