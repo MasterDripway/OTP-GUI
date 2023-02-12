@@ -111,13 +111,13 @@ class MainWidget(QtWidgets.QWidget):
 
 
 if __name__ == "__main__":
-    DEFAULT_LOC = os.environ["VIRTUAL_ENV"]
+    DEFAULT_LOC = os.path.dirname(os.path.abspath(__file__))
     
     app = QtWidgets.QApplication([])
-    with open(DEFAULT_LOC + "/../style.qss", "r") as f:
+    with open(DEFAULT_LOC + "/style.qss", "r") as f:
         _style = f.read()
         app.setStyleSheet(_style)
-    _version = open(DEFAULT_LOC + "/../version.txt", "r").readlines()[0]
+    _version = open(DEFAULT_LOC + "/version.txt", "r").readlines()[0]
     
     widget = MainWidget()
     widget.setWindowTitle("OTP TOOL V-" + _version)
