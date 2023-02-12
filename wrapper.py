@@ -1,4 +1,4 @@
-#! venv/bin/python
+#! ./venv/bin/python
 import sys, os
 from lib.rust_wrap import encode, decode
 from PySide6 import QtCore, QtWidgets
