@@ -1,0 +1,12 @@
+
+
+QLineEdit {
+    background-color: rgb(75, 75, 75);
+    color: #FFFFFF;
+    width:650px;
+}
+
+QTextEdit {
+    color: #FFFFFF;
+    background-color: rgb(75,75,75);
+}
