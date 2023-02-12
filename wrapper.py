@@ -101,9 +101,10 @@ class MainWidget(QtWidgets.QWidget):
 
     @QtCore.Slot()
     def openKey(self):
-        dlg = QtWidgets.QFileDialog()
+        dlg = QtWidgets.QFileDialog() 
         dlg.setAcceptMode(QtWidgets.QFileDialog.AcceptSave)
-
+        
+        
         if dlg.exec():
             self.keypath.setText(dlg.selectedFiles()[0])
 
@@ -120,7 +121,7 @@ if __name__ == "__main__":
     
     widget = MainWidget()
     widget.setWindowTitle("OTP TOOL V-" + _version)
-    
+ 
     widget.show()
 
     sys.exit(app.exec())
