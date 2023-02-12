@@ -1,4 +1,5 @@
 cd OTP-GUI
 python -m venv ./venv
+echo "export DEFAULT_HOME" >> ./venv/bin/activate
 ./venv/bin/pip install --upgrade pip
 ./venv/bin/pip install -r requirements.txt
