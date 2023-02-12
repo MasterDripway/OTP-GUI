@@ -1,3 +1,4 @@
+#! venv/bin/python
 import sys, os
 from lib.rust_wrap import encode, decode
 from PySide6 import QtCore, QtWidgets
@@ -109,12 +110,13 @@ class MainWidget(QtWidgets.QWidget):
 
 
 if __name__ == "__main__":
+    DEFAULT_LOC = os.environ["DEFAULT_HOME"]
+    
     app = QtWidgets.QApplication([])
-
-    with open("style.qss", "r") as f:
+    with open(DEFAULT_LOC + "/style.qss", "r") as f:
         _style = f.read()
         app.setStyleSheet(_style)
-    _version = open("version.txt", "r").readlines()[0]
+    _version = open(DEFAULT_LOC + "/version.txt", "r").readlines()[0]
     
     widget = MainWidget()
     widget.setWindowTitle("OTP TOOL V-" + _version)
