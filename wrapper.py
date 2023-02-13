@@ -27,16 +27,19 @@ class MainWidget(QtWidgets.QWidget):
         self.statusBox = QtWidgets.QTextEdit()
         self.statusBox.setEnabled(False)
 
-        self.createGroup([[self.filepath, self.fileButton], 
-                          [self.keypath, self.keyButton], 
-                          [self.outputpath, self.outputButton]])
+        self.createGroup(
+            [
+                [self.filepath, self.fileButton],
+                [self.keypath, self.keyButton],
+                [self.outputpath, self.outputButton],
+            ]
+        )
 
         self.createButtonBox([self.encodeButton, self.decodeButton])
 
         mainlayout.addWidget(self._box)
         mainlayout.addWidget(self._bbox)
         mainlayout.addWidget(self.statusBox)
-
 
         self.setLayout(mainlayout)
 
@@ -46,20 +49,20 @@ class MainWidget(QtWidgets.QWidget):
         for b in order:
             main.addWidget(b)
         self._bbox.setLayout(main)
-        
-    def createGroup(self, order : list):
+
+    def createGroup(self, order: list):
         self._box = QtWidgets.QGroupBox("File Locations")
         main = QtWidgets.QFormLayout()
         for row in order:
             main.addRow(*row)
 
         self._box.setLayout(main)
-            
+
     def clear_input(self):
         self.filepath.setText("")
         self.keypath.setText("")
         self.outputpath.setText("")
-    
+
     @QtCore.Slot()
     def run_decode(self):
         fp = self.filepath.text()
@@ -82,7 +85,6 @@ class MainWidget(QtWidgets.QWidget):
             self.statusBox.setText(info)
             self.clear_input()
 
-
     @QtCore.Slot()
     def createFile(self):
         dlg = QtWidgets.QFileDialog()
@@ -101,27 +103,25 @@ class MainWidget(QtWidgets.QWidget):
 
     @QtCore.Slot()
     def openKey(self):
-        dlg = QtWidgets.QFileDialog() 
+        dlg = QtWidgets.QFileDialog()
         dlg.setAcceptMode(QtWidgets.QFileDialog.AcceptSave)
-        
-        
+
         if dlg.exec():
             self.keypath.setText(dlg.selectedFiles()[0])
 
 
-
 if __name__ == "__main__":
     DEFAULT_LOC = os.path.dirname(os.path.abspath(__file__))
-    
+
     app = QtWidgets.QApplication([])
     with open(DEFAULT_LOC + "/style.qss", "r") as f:
         _style = f.read()
         app.setStyleSheet(_style)
     _version = open(DEFAULT_LOC + "/version.txt", "r").readlines()[0]
-    
+
     widget = MainWidget()
     widget.setWindowTitle("OTP TOOL V-" + _version)
- 
+
     widget.show()
 
     sys.exit(app.exec())
